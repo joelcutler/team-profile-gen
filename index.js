@@ -1,9 +1,9 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-const generateHTML = require('./src/generateHtml');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const generateHTML = require("./src/generateHtml");
 let teamRoster = [];
 
 const managerQuestions = () => {
@@ -70,7 +70,7 @@ const managerQuestions = () => {
       },
     ])
     .then(({ addFinish, name, id, email, role, officeNumber }) => {
-      teamRoster.push(new Manager(officeNumber, name, id, email, role ));
+      teamRoster.push(new Manager(officeNumber, name, id, email, role));
       console.log("teamRoster = ", teamRoster);
       if (addFinish === "Add Engineer") {
         engineerQuestions();
@@ -146,7 +146,7 @@ const engineerQuestions = () => {
       },
     ])
     .then(({ addFinish, name, id, email, role, github }) => {
-      teamRoster.push(new Engineer(name, id, email, role, github));
+      teamRoster.push(new Engineer(github, name, id, email, role));
       console.log("teamRoster = ", teamRoster);
       if (addFinish === "Add Engineer") {
         engineerQuestions();
@@ -222,7 +222,7 @@ const internQuestions = () => {
       },
     ])
     .then(({ addFinish, name, id, email, role, school }) => {
-      teamRoster.push(new Intern(name, id, email, role, school));
+      teamRoster.push(new Intern(school, name, id, email, role));
       console.log("teamRoster = ", teamRoster);
       if (addFinish === "Add Engineer") {
         engineerQuestions();
@@ -235,10 +235,10 @@ const internQuestions = () => {
 };
 
 const createHTML = (teamRosterPlaceholder) => {
-  const html =  generateHTML(teamRosterPlaceholder);
-  fs.writeFile('./src/index.html', html, function (err){
+  const html = generateHTML(teamRosterPlaceholder);
+  fs.writeFile("./src/index.html", html, function (err) {
     if (err) throw err;
-    console.log('HTML file generated');
+    console.log("HTML file generated");
   });
 };
 
