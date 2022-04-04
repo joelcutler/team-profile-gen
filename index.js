@@ -236,7 +236,7 @@ const internQuestions = () => {
 
 const createHTML = (teamRosterPlaceholder) => {
   const html = generateHTML(teamRosterPlaceholder);
-  fs.writeFile("./src/index.html", html, function (err) {
+  fs.writeFile("./dist/index.html", html, function (err) {
     if (err) throw err;
     console.log("HTML file generated");
   });
