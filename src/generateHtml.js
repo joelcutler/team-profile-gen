@@ -56,7 +56,7 @@ const genCard = (teamRoster) => {
     </div>
   </div>
   `
-})
+}).join(" ")
 }
 
 function generateTeam(teamRoster) {
@@ -91,9 +91,9 @@ function generateTeam(teamRoster) {
     </div>
   </header>
   <main>
-    <div class="has-background-grey-lighter columns is-multiline is-flex-wrap-wrap is-justify-content-space-around">
+    <div class="has-background-grey-lighter columns is-flex-wrap-wrap is-justify-content-space-around">
   
-      ${genCard(teamRoster)};
+      ${genCard(teamRoster)}
 
     </div>
   </main>
