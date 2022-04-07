@@ -1,5 +1,65 @@
 
-const generateHTML = (teamRoster) => {
+const genOffice = (member) => {
+  if (member.getRole() === "Manager") {
+    return`
+    <span class="has-text-weight-bold">Office: </span><span>${member.getOffice()}</span>
+    `
+  }
+  else { 
+    return '';
+  }
+}
+
+const genGithub = (member) => {
+  if (member.getRole() === "Engineer") {
+    return`
+    <span class="has-text-weight-bold">Github Username: </span><span>${member.getGithub()}</span>
+    `
+  }
+  else { 
+    return '';
+  }
+}
+
+const genSchool = (member) => {
+  if (member.getRole() === "Intern") {
+    return`
+    <span class="has-text-weight-bold">School: </span><span>${member.getSchool()}</span>
+    `
+  }
+  else { 
+    return '';
+  }
+}
+
+const genCard = (teamRoster) => {
+  return teamRoster.map(member => {
+    return `
+  <div class="card column is-4-desktop m-3">
+    <div class="card-header">
+      <div class="card-header-title is-centered">${member.name}</div>
+      <div class="card-header-icon">
+        <i class="fa-solid fa-person-military-pointing"></i>
+      </div>
+    </div>
+    <div class="card-content">
+      <span class="has-text-weight-bold">Role: </span><span>${member.getRole()}</span>
+      <br />
+      <span class="has-text-weight-bold">ID: </span><span>${member.id}</span>
+      <br />
+      <span class="has-text-weight-bold">Email: </span><span>${member.email}</span>
+      <br />
+    ${genOffice(member)}
+    ${genGithub(member)}
+    ${genSchool(member)}
+      <br />
+    </div>
+  </div>
+  `
+})
+}
+
+function generateTeam(teamRoster) {
   return `
   <!DOCTYPE html>
 
@@ -32,89 +92,15 @@ const generateHTML = (teamRoster) => {
   </header>
   <main>
     <div class="has-background-grey-lighter columns is-multiline is-flex-wrap-wrap is-justify-content-space-around">
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Joel</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Manager</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>684</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>joel@joel.com</span>
-          <br />
-          <span class="has-text-weight-bold">Office: </span><span>789</span>
-          <br />
-        </div>
-      </div>
-
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Jake</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Engineer</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>123</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>jake@jake.com</span>
-          <br />
-          <span class="has-text-weight-bold">Github: </span><span>jakeGH</span>
-          <br />
-        </div>
-      </div>
-
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Kim</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Intern</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>987</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>kim@kim.com</span>
-          <br />
-          <span class="has-text-weight-bold">School: </span><span>University of Utah</span>
-          <br />
-        </div>
-      </div>
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Jen</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Intern</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>789</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>jen@jen.com</span>
-          <br />
-          <span class="has-text-weight-bold">School: </span><span>University of Massachusetts</span>
-          <br />
-        </div>
-      </div>
-
+  
+      ${genCard(teamRoster)};
 
     </div>
   </main>
 </body>
-  
-  `;
+`
 };
 
-module.exports = generateHTML;
+module.exports = generateTeam;
 
 // check for loops in trivia game as template for mapping/looping through teamroster array

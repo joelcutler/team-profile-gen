@@ -29,82 +29,31 @@
   </header>
   <main>
     <div class="has-background-grey-lighter columns is-multiline is-flex-wrap-wrap is-justify-content-space-around">
+    
+
+      ${teamRoster.map(member => {
+        return `
       <div class="card column is-4-desktop m-3">
         <div class="card-header">
-          <div class="card-header-title is-centered">Joel</div>
+          <div class="card-header-title is-centered">${member.name}</div>
           <div class="card-header-icon">
             <i class="fa-solid fa-person-military-pointing"></i>
           </div>
         </div>
         <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Manager</span>
+          <span class="has-text-weight-bold">Role: </span><span>${member.getrole()}</span>
           <br />
-          <span class="has-text-weight-bold">ID: </span><span>684</span>
+          <span class="has-text-weight-bold">ID: </span><span>${member.id}</span>
           <br />
-          <span class="has-text-weight-bold">Email: </span><span>joel@joel.com</span>
+          <span class="has-text-weight-bold">Email: </span><span>${member.email}</span>
           <br />
-          <span class="has-text-weight-bold">Office: </span><span>789</span>
-          <br />
-        </div>
-      </div>
-
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Jake</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Engineer</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>123</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>jake@jake.com</span>
-          <br />
-          <span class="has-text-weight-bold">Github: </span><span>jakeGH</span>
+          <span class="has-text-weight-bold">Office: </span><span>${member.getOffice()}</span>
           <br />
         </div>
       </div>
-
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Kim</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Intern</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>987</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>kim@kim.com</span>
-          <br />
-          <span class="has-text-weight-bold">School: </span><span>University of Utah</span>
-          <br />
-        </div>
-      </div>
-      <div class="card column is-4-desktop m-3">
-        <div class="card-header">
-          <div class="card-header-title is-centered">Jen</div>
-          <div class="card-header-icon">
-            <i class="fa-solid fa-person-military-pointing"></i>
-          </div>
-        </div>
-        <div class="card-content">
-          <span class="has-text-weight-bold">Role: </span><span>Intern</span>
-          <br />
-          <span class="has-text-weight-bold">ID: </span><span>789</span>
-          <br />
-          <span class="has-text-weight-bold">Email: </span><span>jen@jen.com</span>
-          <br />
-          <span class="has-text-weight-bold">School: </span><span>University of Massachusetts</span>
-          <br />
-        </div>
-      </div>
-
-
+      `
+    })};
+    
     </div>
   </main>
 </body>
