@@ -1,40 +1,37 @@
-
 const genOffice = (member) => {
   if (member.getRole() === "Manager") {
-    return`
+    return `
     <span class="has-text-weight-bold">Office: </span><span>${member.getOffice()}</span>
-    `
+    `;
+  } else {
+    return "";
   }
-  else { 
-    return '';
-  }
-}
+};
 
 const genGithub = (member) => {
   if (member.getRole() === "Engineer") {
-    return`
-    <span class="has-text-weight-bold">Github Username: </span><span>${member.getGithub()}</span>
-    `
+    return `
+    <span class="has-text-weight-bold">Github Username: </span><a href="https://github.com/${member.getGithub()}">${member.getGithub()}</a>
+    `;
+  } else {
+    return "";
   }
-  else { 
-    return '';
-  }
-}
+};
 
 const genSchool = (member) => {
   if (member.getRole() === "Intern") {
-    return`
+    return `
     <span class="has-text-weight-bold">School: </span><span>${member.getSchool()}</span>
-    `
+    `;
+  } else {
+    return "";
   }
-  else { 
-    return '';
-  }
-}
+};
 
 const genCard = (teamRoster) => {
-  return teamRoster.map(member => {
-    return `
+  return teamRoster
+    .map((member) => {
+      return `
   <div class="card column is-4-desktop m-3">
     <div class="card-header">
       <div class="card-header-title is-centered">${member.name}</div>
@@ -47,7 +44,9 @@ const genCard = (teamRoster) => {
       <br />
       <span class="has-text-weight-bold">ID: </span><span>${member.id}</span>
       <br />
-      <span class="has-text-weight-bold">Email: </span><span>${member.email}</span>
+      <span class="has-text-weight-bold">Email: </span><a href="mailto:"${
+        member.email
+      }>${member.email}</a> 
       <br />
     ${genOffice(member)}
     ${genGithub(member)}
@@ -55,9 +54,10 @@ const genCard = (teamRoster) => {
       <br />
     </div>
   </div>
-  `
-}).join(" ")
-}
+  `;
+    })
+    .join(" ");
+};
 
 function generateTeam(teamRoster) {
   return `
@@ -98,8 +98,8 @@ function generateTeam(teamRoster) {
     </div>
   </main>
 </body>
-`
-};
+`;
+}
 
 module.exports = generateTeam;
 
